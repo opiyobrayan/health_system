@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#">TRANSFORM HEALTH COALITION (THC) KENYA SYSTEM</a>
+    <div class="navbar-nav">
+      <div class="nav-item text-nowrap">
+        <a class="nav-link px-3" href="#">Sign out</a>
+      </div>
+    </div>
+  </header>
+  
+  
+  <div class="container-fluid">
+    <div class="row">
+       {% include 'nav.html' %}
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+          
+            <div class="row">
+                <div class="col-md-4">
+                <h1 class="h2" style="width:100%;text-align: center;height: 50px;color:blue;box-shadow: 30px 20px 20px grey; ">Activity Report</h1>
+          
+                </div>
+                <div class="col-md-4" style="width:100%;text-align: center;height: 50px;color:blue;box-shadow: 30px 20px 20px grey; ">
+                   <a href="">Upload Activity Report</a> 
+                </div>
+                <div class="col-md-4" style="width:100%;text-align: center;height: 50px;color:blue;box-shadow: 30px 20px 20px grey; ">
+                    <a href="{% url 'add-activity' %}">Add Avtivity Report</a> 
+                </div>
+            </div>
+    
+          
+          <div class="row" style="padding-top:50px ;">
+         
+          </div>
+          <table class="table table-success table-striped">
+            <thead>
+                <tr>
+                  <th scope="col">Activity Name</th>
+                  <th scope="col">Venue</th>
+                  <th scope="col">Start Date</th>
+                  <th scope="col">End DAte</th>
+                  <th scope="col">Number of Participants</th>
+                  <th scope="col">Submitted By</th>
+                  <th scope="col">Download</th>
+                  
+                </tr>
+            </thead>
+            <tbody>
+              {% for workplan in workplans %}
+                <tr>
+                  <td>{{ workplan.name }}</td>
+                  <td>{{ workplan.owner }}</td>
+                  <td><a href="{{ workplan.pdf.url }}" style="color:blue;">Download</a></td>
+                
+                </tr>
+              {% endfor %}
+            </tbody>
+        </table>
+  
+  
+        
+          
+        
+        </main>
+      
+    </div>
+  </div>
+
+
+{% endblock %}
